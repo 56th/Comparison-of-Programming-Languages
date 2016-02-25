@@ -1,0 +1,38 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+% \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+\usepackage{amsmath,float,hyperref,xcolor,listings}
+\usepackage[left=2cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\hypersetup{colorlinks=false}
+
+\lstset{
+	texcl,
+	escapechar=`,
+	escapebegin=\lst@commentstyle,
+    basicstyle=\tiny\ttfamily\color{black},
+    keywordstyle=\color{green!40!black},
+    emphstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{purple!40!black},
+    identifierstyle=\color{blue!30!black},
+    showstringspaces=false,
+    stringstyle=\color{orange},
+    language=C++,
+    numbers=left,
+    tabsize=2,
+    breaklines=true,
+    breakatwhitespace=true
+}
+
+\restylefloat{table}
+
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\footnotesize\oldtabular}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\begin{document}
+    \input{title}
+    %\input{body}
+    %\input{bibliography}
+\end{document} 
