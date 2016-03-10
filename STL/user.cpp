@@ -42,11 +42,12 @@ int main() {
 	map<string, size_t>::const_iterator iter;
 	vector<pair<size_t, string>> res; // отсортированный (см. далее) по частоте контейнер
 	size_t i;
+	clock_t begTime, endTime;
 	ifstream ignoreFile("ignore.txt");
     while (ignoreFile >> word) words2ignore.insert(word);
 	getBook();
-	while(book.size() > 1) {
-		clock_t begTime = clock();
+	while (book.size()) {
+		begTime = clock();
 		getWord();
 		for (i = 1; i < book.size() - 1; ++i) 
 			if (book[i] == word) {
@@ -56,12 +57,13 @@ int main() {
 		for (iter = freq.begin(); iter != freq.end(); ++iter) 
 			res.push_back(make_pair(iter->second, iter->first));
 		sort(res.rbegin(), res.rend());
+		endTime = clock();
 		N = min(N, res.size());
 		for (i = 0; i < N; ++i) 
 			cout << res[i].first << ' ' << res[i].second << '\n';
-		cout << "time diff: " << float(clock() - begTime) / CLOCKS_PER_SEC << '\n'
+		cout << "time diff: " << double(endTime - begTime) / CLOCKS_PER_SEC << '\n'
 			 << "words count: " << book.size() << "\n\n";
-		book.resize(book.size() / 4);
+		book.resize(book.size() / 10);
 		freq.clear();
 		res.clear();
 	}

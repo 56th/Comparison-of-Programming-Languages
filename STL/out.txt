@@ -1,71 +1,130 @@
-131 martin eden
-88 and martin
-84 martin was
-80 martin had
-54 that martin
-50 martin said
-40 but martin
-38 to martin
-36 martin did
-36 martin and
-34 you martin
-26 when martin
-26 martin answered
-26 as martin
-24 martin went
-time diff: 0.321
-words count: 277508
+1055 martin eden
+704 and martin
+672 martin was
+640 martin had
+432 that martin
+400 martin said
+320 but martin
+304 to martin
+288 martin did
+288 martin and
+272 you martin
+208 when martin
+208 martin answered
+208 as martin
+192 martin went
+time diff: 2.104
+words count: 2220064
 
-36 martin eden
-18 and martin
-16 martin had
-15 martin was
-9 that martin
-8 martin did
-7 martin nodded
-7 martin and
-7 but martin
-6 martin said
-5 you martin
-5 to martin
-5 martin went
-5 martin shook
-5 as martin
-time diff: 0.087
-words count: 69377
+106 martin eden
+67 martin was
+66 and martin
+60 martin had
+42 that martin
+32 martin said
+28 martin did
+28 but martin
+27 martin and
+25 you martin
+25 to martin
+20 martin went
+20 for martin
+19 as martin
+17 martin shook
+time diff: 0.218
+words count: 222006
 
-36 did not
-26 he did
-7 did he
-6 did you
-5 she did
-3 they did
-3 how did
-2 who did
-2 where did
-2 nor did
-2 did it
-1 you did
-1 years did
-1 what did
-1 vividly did
-time diff: 0.02
-words count: 17344
+32 he could
+13 could not
+8 could be
+7 i could
+6 could do
+4 who could
+4 how could
+4 could he
+3 they could
+3 she could
+3 could see
+2 you could
+2 that could
+2 it could
+2 could lay
+time diff: 0.028
+words count: 22200
 
-8 his eyes
+5 his eyes
 3 the eyes
 3 eyes and
-2 eyes were
 1 longing eyes
-1 hungry eyes
 1 had eyes
+1 eyes were
 1 eyes was
 1 eyes there
-1 eyes she
-1 eyes on
 1 eyes of
 1 eyes leaped
-1 eyes here
 1 eyes he
-time diff: 0.006
-words count: 4336
+1 eyes from
+1 eyes came
+1 eyes as
+1 eager eyes
+time diff: 0.003
+words count: 2220
+
+2 his cap
+1 cap he
+1 cap and
+time diff: 0
+words count: 222
+
+time diff: 0
+words count: 22
+
+time diff: 0
+words count: 2
+
+---
+
+time diff: 5.168
+words count: 2500000
+
+time diff: 0.618
+words count: 250000
+
+time diff: 0.054
+words count: 25000
+
+time diff: 0.004
+words count: 2500
+
+time diff: 0.001
+words count: 250
+
+time diff: 0
+words count: 25
+
+time diff: 0
+words count: 2
+
+---
+
+time diff: 12.211
+words count: 3000000
+
+time diff: 0.746
+words count: 300000
+
+time diff: 0.054
+words count: 30000
+
+time diff: 0.004
+words count: 3000
+
+time diff: 0.001
+words count: 300
+
+time diff: 0
+words count: 30
+
+time diff: 0
+words count: 3
+
