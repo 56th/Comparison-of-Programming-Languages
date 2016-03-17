@@ -1,130 +1,32 @@
-1055 martin eden
-704 and martin
-672 martin was
-640 martin had
-432 that martin
-400 martin said
-320 but martin
-304 to martin
-288 martin did
-288 martin and
-272 you martin
-208 when martin
-208 martin answered
-208 as martin
-192 martin went
-time diff: 2.104
-words count: 2220064
-
-106 martin eden
-67 martin was
-66 and martin
-60 martin had
-42 that martin
-32 martin said
-28 martin did
-28 but martin
-27 martin and
-25 you martin
-25 to martin
-20 martin went
-20 for martin
-19 as martin
-17 martin shook
-time diff: 0.218
-words count: 222006
-
-32 he could
-13 could not
-8 could be
-7 i could
-6 could do
-4 who could
-4 how could
-4 could he
-3 they could
-3 she could
-3 could see
-2 you could
-2 that could
-2 it could
-2 could lay
-time diff: 0.028
-words count: 22200
-
-5 his eyes
-3 the eyes
-3 eyes and
-1 longing eyes
-1 had eyes
-1 eyes were
-1 eyes was
-1 eyes there
-1 eyes of
-1 eyes leaped
-1 eyes he
-1 eyes from
-1 eyes came
-1 eyes as
-1 eager eyes
-time diff: 0.003
-words count: 2220
-
-2 his cap
-1 cap he
-1 cap and
-time diff: 0
-words count: 222
-
-time diff: 0
-words count: 22
-
-time diff: 0
-words count: 2
+65 martin eden
+44 and martin
+42 martin was
+40 martin had
+27 that martin
+25 martin said
+20 but martin
+19 to martin
+18 martin did
+18 martin and
+17 you martin
+13 when martin
+13 martin answered
+13 as martin
+12 martin went
+time diff: 0.141
+words count: 138754
 
 ---
 
-time diff: 5.168
-words count: 2500000
+time diff: 94.566
+words count: 16000000
 
-time diff: 0.618
+time diff: 19.738
+words count: 4000000
+
+time diff: 3.855
+words count: 1000000
+
+time diff: 0.742
 words count: 250000
-
-time diff: 0.054
-words count: 25000
-
-time diff: 0.004
-words count: 2500
-
-time diff: 0.001
-words count: 250
-
-time diff: 0
-words count: 25
-
-time diff: 0
-words count: 2
-
----
-
-time diff: 12.211
-words count: 3000000
-
-time diff: 0.746
-words count: 300000
-
-time diff: 0.054
-words count: 30000
-
-time diff: 0.004
-words count: 3000
-
-time diff: 0.001
-words count: 300
-
-time diff: 0
-words count: 30
-
-time diff: 0
-words count: 3
 
