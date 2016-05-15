@@ -5,30 +5,30 @@
 #include <set>
 #include <string>
 #include <algorithm>
-#include <ctime> // замерить время
+#include <ctime> // Г§Г Г¬ГҐГ°ГЁГІГј ГўГ°ГҐГ¬Гї
 #include <cctype> // isalnum
 
-using namespace std; // программа коротенькая, так что можно и расслабиться
+using namespace std; // ГЇГ°Г®ГЈГ°Г Г¬Г¬Г  ГЄГ®Г°Г®ГІГҐГ­ГјГЄГ Гї, ГІГ ГЄ Г·ГІГ® Г¬Г®Г¦Г­Г® ГЁ Г°Г Г±Г±Г«Г ГЎГЁГІГјГ±Гї
 
-// сегмент данных
+// Г±ГҐГЈГ¬ГҐГ­ГІ Г¤Г Г­Г­Г»Гµ
 
-vector<string> book; // текст книги 
-string word; // самое популярное слово
-set<string> words2ignore; // игнорируемые слова (предлоги, артикли и т.д.)
-unsigned N = 15; // количество выводимых сочетаний слов
+vector<string> book; // ГІГҐГЄГ±ГІ ГЄГ­ГЁГЈГЁ 
+string word; // Г±Г Г¬Г®ГҐ ГЇГ®ГЇГіГ«ГїГ°Г­Г®ГҐ Г±Г«Г®ГўГ®
+set<string> words2ignore; // ГЁГЈГ­Г®Г°ГЁГ°ГіГҐГ¬Г»ГҐ Г±Г«Г®ГўГ  (ГЇГ°ГҐГ¤Г«Г®ГЈГЁ, Г Г°ГІГЁГЄГ«ГЁ ГЁ ГІ.Г¤.)
+unsigned N = 15; // ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ»ГўГ®Г¤ГЁГ¬Г»Гµ Г±Г®Г·ГҐГІГ Г­ГЁГ© Г±Г«Г®Гў
 
 
-void getBook() { // считываем текст книжки из стандартного ввода в контейнер
+void getBook() { // Г±Г·ГЁГІГ»ГўГ ГҐГ¬ ГІГҐГЄГ±ГІ ГЄГ­ГЁГ¦ГЄГЁ ГЁГ§ Г±ГІГ Г­Г¤Г Г°ГІГ­Г®ГЈГ® ГўГўГ®Г¤Г  Гў ГЄГ®Г­ГІГҐГ©Г­ГҐГ°
 	while (cin >> word) {
-		transform(word.begin(), word.end(), word.begin(), ::tolower); // прописные буквы к строчным
-		word.erase(remove_if(word.begin(), word.end(), [](char c){return !isalnum(c);}), word.end()); // избавляемся от лишних символов в слове
+		transform(word.begin(), word.end(), word.begin(), ::tolower); // ГЇГ°Г®ГЇГЁГ±Г­Г»ГҐ ГЎГіГЄГўГ» ГЄ Г±ГІГ°Г®Г·Г­Г»Г¬
+		word.erase(remove_if(word.begin(), word.end(), [](char c){return !isalnum(c);}), word.end()); // ГЁГ§ГЎГ ГўГ«ГїГҐГ¬Г±Гї Г®ГІ Г«ГЁГёГ­ГЁГµ Г±ГЁГ¬ГўГ®Г«Г®Гў Гў Г±Г«Г®ГўГҐ
 		if (word.length()) book.push_back(word);
 	}
 }
 
-void getWord() { // находим самое популярное слово
-	map<string, size_t> freq; // ключ -- слово, значение -- частота появления
-	size_t i, maxFreq = 0; // максимальная частота появления слова
+void getWord() { // Г­Г ГµГ®Г¤ГЁГ¬ Г±Г Г¬Г®ГҐ ГЇГ®ГЇГіГ«ГїГ°Г­Г®ГҐ Г±Г«Г®ГўГ®
+	map<string, size_t> freq; // ГЄГ«ГѕГ· -- Г±Г«Г®ГўГ®, Г§Г­Г Г·ГҐГ­ГЁГҐ -- Г·Г Г±ГІГ®ГІГ  ГЇГ®ГїГўГ«ГҐГ­ГЁГї
+	size_t i, maxFreq = 0; // Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г·Г Г±ГІГ®ГІГ  ГЇГ®ГїГўГ«ГҐГ­ГЁГї Г±Г«Г®ГўГ 
 	for (i = 0; i < book.size(); ++i) 
 		if (!words2ignore.count(book[i]) && ++freq[book[i]] > maxFreq) {
 			word = book[i];
@@ -37,13 +37,13 @@ void getWord() { // находим самое популярное слово
 }
 
 int main() {
-	map<string, size_t> freq; // ключ -- сочетание слов, значение -- частота появления
+	map<string, size_t> freq; // ГЄГ«ГѕГ· -- Г±Г®Г·ГҐГІГ Г­ГЁГҐ Г±Г«Г®Гў, Г§Г­Г Г·ГҐГ­ГЁГҐ -- Г·Г Г±ГІГ®ГІГ  ГЇГ®ГїГўГ«ГҐГ­ГЁГї
 	map<string, size_t>::const_iterator iter;
-	vector<pair<size_t, string>> res; // отсортированный (см. далее) по частоте контейнер
+	vector<pair<size_t, string>> res; // Г®ГІГ±Г®Г°ГІГЁГ°Г®ГўГ Г­Г­Г»Г© (Г±Г¬. Г¤Г Г«ГҐГҐ) ГЇГ® Г·Г Г±ГІГ®ГІГҐ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°
 	size_t i;
 	clock_t begTime, endTime;
 	ifstream ignoreFile("ignore.txt");
-    while (ignoreFile >> word) words2ignore.insert(word);
+	while (ignoreFile >> word) words2ignore.insert(word);
 	getBook();
 
 		begTime = clock();
@@ -61,7 +61,7 @@ int main() {
 		for (i = 0; i < N; ++i) 
 			cout << res[i].first << ' ' << res[i].second << '\n';
 		cout << "time diff: " << double(endTime - begTime) / CLOCKS_PER_SEC << '\n'
-			 << "words count: " << book.size() << "\n\n";
+		     << "words count: " << book.size() << "\n\n";
 
 	return 0;
 }
