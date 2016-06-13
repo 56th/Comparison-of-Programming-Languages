@@ -5,30 +5,30 @@
 #include <set>
 #include <string>
 #include <algorithm>
-#include <ctime> // Р·Р°РјРµСЂРёС‚СЊ РІСЂРµРјСЏ
+#include <ctime> // замерить время
 #include <cctype> // isalnum
 
-using namespace std; // РїСЂРѕРіСЂР°РјРјР° РєРѕСЂРѕС‚РµРЅСЊРєР°СЏ, С‚Р°Рє С‡С‚Рѕ РјРѕР¶РЅРѕ Рё СЂР°СЃСЃР»Р°Р±РёС‚СЊСЃСЏ
+using namespace std; // программа коротенькая, так что можно и расслабиться
 
-// СЃРµРіРјРµРЅС‚ РґР°РЅРЅС‹С…
+// сегмент данных
 
-vector<string> book; // С‚РµРєСЃС‚ РєРЅРёРіРё 
-string word; // СЃР°РјРѕРµ РїРѕРїСѓР»СЏСЂРЅРѕРµ СЃР»РѕРІРѕ
-set<string> words2ignore; // РёРіРЅРѕСЂРёСЂСѓРµРјС‹Рµ СЃР»РѕРІР° (РїСЂРµРґР»РѕРіРё, Р°СЂС‚РёРєР»Рё Рё С‚.Рґ.)
-unsigned N = 15; // РєРѕР»РёС‡РµСЃС‚РІРѕ РІС‹РІРѕРґРёРјС‹С… СЃРѕС‡РµС‚Р°РЅРёР№ СЃР»РѕРІ
+vector<string> book; // текст книги 
+string word; // самое популярное слово
+set<string> words2ignore; // игнорируемые слова (предлоги, артикли и т.д.)
+unsigned N = 15; // количество выводимых сочетаний слов
 
 
-void getBook() { // СЃС‡РёС‚С‹РІР°РµРј С‚РµРєСЃС‚ РєРЅРёР¶РєРё РёР· СЃС‚Р°РЅРґР°СЂС‚РЅРѕРіРѕ РІРІРѕРґР° РІ РєРѕРЅС‚РµР№РЅРµСЂ
+void getBook() { // считываем текст книжки из стандартного ввода в контейнер
 	while (cin >> word) {
-		transform(word.begin(), word.end(), word.begin(), ::tolower); // РїСЂРѕРїРёСЃРЅС‹Рµ Р±СѓРєРІС‹ Рє СЃС‚СЂРѕС‡РЅС‹Рј
-		word.erase(remove_if(word.begin(), word.end(), [](char c){return !isalnum(c);}), word.end()); // РёР·Р±Р°РІР»СЏРµРјСЃСЏ РѕС‚ Р»РёС€РЅРёС… СЃРёРјРІРѕР»РѕРІ РІ СЃР»РѕРІРµ
+		transform(word.begin(), word.end(), word.begin(), ::tolower); // прописные буквы к строчным
+		word.erase(remove_if(word.begin(), word.end(), [](char c){return !isalnum(c);}), word.end()); // избавляемся от лишних символов в слове
 		if (word.length()) book.push_back(word);
 	}
 }
 
-void getWord() { // РЅР°С…РѕРґРёРј СЃР°РјРѕРµ РїРѕРїСѓР»СЏСЂРЅРѕРµ СЃР»РѕРІРѕ
-	map<string, size_t> freq; // РєР»СЋС‡ -- СЃР»РѕРІРѕ, Р·РЅР°С‡РµРЅРёРµ -- С‡Р°СЃС‚РѕС‚Р° РїРѕСЏРІР»РµРЅРёСЏ
-	size_t i, maxFreq = 0; // РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ С‡Р°СЃС‚РѕС‚Р° РїРѕСЏРІР»РµРЅРёСЏ СЃР»РѕРІР°
+void getWord() { // находим самое популярное слово
+	map<string, size_t> freq; // ключ -- слово, значение -- частота появления
+	size_t i, maxFreq = 0; // максимальная частота появления слова
 	for (i = 0; i < book.size(); ++i) 
 		if (!words2ignore.count(book[i]) && ++freq[book[i]] > maxFreq) {
 			word = book[i];
@@ -37,9 +37,9 @@ void getWord() { // РЅР°С…РѕРґРёРј СЃР°РјРѕРµ РїРѕРїСѓР»СЏСЂРЅРѕРµ СЃР»РѕРІРѕ
 }
 
 int main() {
-	map<string, size_t> freq; // РєР»СЋС‡ -- СЃРѕС‡РµС‚Р°РЅРёРµ СЃР»РѕРІ, Р·РЅР°С‡РµРЅРёРµ -- С‡Р°СЃС‚РѕС‚Р° РїРѕСЏРІР»РµРЅРёСЏ
+	map<string, size_t> freq; // ключ -- сочетание слов, значение -- частота появления
 	map<string, size_t>::const_iterator iter;
-	vector<pair<size_t, string>> res; // РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ (СЃРј. РґР°Р»РµРµ) РїРѕ С‡Р°СЃС‚РѕС‚Рµ РєРѕРЅС‚РµР№РЅРµСЂ
+	vector<pair<size_t, string>> res; // отсортированный (см. далее) по частоте контейнер
 	size_t i;
 	clock_t begTime, endTime;
 	ifstream ignoreFile("ignore.txt");

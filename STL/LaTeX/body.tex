@@ -12,6 +12,8 @@
 
 Протестируйте разработанную программу. Исследуйте асимптотические свойства разработанной программы на системе тестов с возрастающей размерностью.
 
+Разработайте программы на языках \texttt{C\#} и \texttt{Java} с использованием аналогичных структур данных и сравните результаты работы.
+
 (\url{http://dispace.edu.nstu.ru/didesk/course/show/5626/5})
 
 \subsection{Вариант задания}
@@ -19,8 +21,10 @@
 Задан большой текст (книга). Для наиболее часто встречающегося слова найти $N$ наиболее часто встречающихся пар слов.
 
 \section{Размышления}
+\label{analysis}
 
 Для поиска наиболее популярного слова (или пары слов) удобно использовать контейнер \href{http://en.cppreference.com/w/cpp/container/map}{std::map} --- ассоциативный массив с красно-чёрным деревом под капюшоном. Ключ суть слово, значение --- частота.
+(Аналоги в \texttt{Java} и \texttt{C\#} --- \texttt{TreeMap} и \texttt{SortedDictionary})
 
 Через $n$ обозначим количество слов в нашей входной книжке. Тогда для занесения в контейнер данных потребуется $O(n \log m)$ времени (поиск в дереве осуществляется за логарифм), где $m \leq n$ --- количество слов без повторений. 
 
@@ -36,28 +40,13 @@
 
 \section{Тестирование}
 
-\subsection{Тестирование сложности и проверка «размышлений»}
-
-\begin{table}[H]
-	\caption{Результаты тестирования при $m = n$}
-	\label{table1}
-    \begin{center}\begin{tabular}{|c|c|c|c|}
-        \hline
-        $i$ & $n$ & $t$, сек & $t_i / t_{i-1}$\\
-        \hline
-        1 & 250 000 & .742 &  \\
-        2 & 1 000 000 & 3.855 & 5.2 \\
-       	3 & 4 000 000 & 19.738 & 5.12 \\
-        4 & 16 000 000 & 94.566 & 4.79\\
-        \hline
-	\end{tabular}\end{center}
-\end{table}
-
 \subsection{Тестирование на реальной книжке}
+
+Для имплементации на всех языках результат один и тот же, во что и хотелось бы верить.
 
 \begin{table}[H]
 	\caption{“Martin Eden,” Jack London. Число слов --- 138 754}
-	\label{table2}
+	\label{table1}
 	\begin{center}\begin{tabular}{|c|c|c|c|}
 			\hline
 			\textbf{частота} & \textbf{пара слов}\\
@@ -81,6 +70,53 @@
 		\end{tabular}\end{center}
 	\end{table}
 
+\subsection{Тестирование сложности и проверка «размышлений»}
+
+Результаты тестирования при $m = n$.
+
+\begin{table}[H]
+	\caption{C++}
+	\label{tableC}
+	\begin{center}\begin{tabular}{|c|c|c|c|}
+			\hline
+			$i$ & $n$ & $t$, сек & $t_i / t_{i-1}$\\
+			\hline
+			1 & 250 000 & .742 &  \\
+			2 & 1 000 000 & 3.855 & 5.2 \\
+			3 & 4 000 000 & 19.738 & 5.12 \\
+			4 & 16 000 000 & 94.566 & 4.79\\
+			\hline
+	\end{tabular}\end{center}
+\end{table}
+
+\begin{table}[H]
+	\caption{C\#}
+	\label{tableSharpC}
+	\begin{center}\begin{tabular}{|c|c|c|c|}
+			\hline
+			$i$ & $n$ & $t$, сек & $t_i / t_{i-1}$\\
+			\hline
+			1 & 250 000 & 5.01 & \\
+			2 & 1 000 000 & 26.53 & 5.2 \\
+			3 & 4 000 000 & 101.15 & 3.8 \\
+			\hline
+	\end{tabular}\end{center}
+\end{table}
+
+\begin{table}[H]
+	\caption{Java}
+	\label{tableJava}
+	\begin{center}\begin{tabular}{|c|c|c|c|}
+			\hline
+			$i$ & $n$ & $t$, сек & $t_i / t_{i-1}$\\
+			\hline
+			1 & 250 000 & 5.32 & \\
+			2 & 1 000 000 & 27.01 & 5.08 \\
+			3 & 4 000 000 & 108.47 & 4.02 \\
+			\hline
+	\end{tabular}\end{center}
+\end{table}
+
 \section{Приложение}
 
 Компилируем исходники с помощью MSVC:\\
@@ -91,7 +127,30 @@
 \texttt{user < dummy.txt >> out.txt}.
 
 \subsection{testGen.cpp}
-\lstinputlisting{../testGen.cpp}
 
-\subsection{user.cpp}
-\lstinputlisting{../user.cpp}
+Генератор больших тестов --- общий для всех языков.
+\lstinputlisting[language=C++]{../testGen.cpp}
+
+\subsection{С++}
+\textbf{user.cpp}
+\lstinputlisting[language=C++]{../user.cpp}
+
+\subsection{С\#}
+\textbf{Program.cs}
+\lstinputlisting[language=C]{../Program.cs}
+\textbf{Analyzer.cs}
+\lstinputlisting[language=C]{../Analyzer.cs}
+
+\subsection{Java}
+\textbf{Main.java}
+\lstinputlisting[language=Java]{../Main.java}
+
+\section{Делаем выводы}
+
+Как видно из таблиц~(\ref{tableC} -- \ref{tableJava}), асимптотика, предсказанная в секции~(\ref{analysis}), работает всегда --- независимо от языка программирования (другого мы и не ожидали).
+
+Так же стоит отметить, что \texttt{С++}, будучи языком компилируемым, справляется с задачей быстрее --- особенно это заметно на больших тестах (с тестом на 16 000 000 он расправился в 5 раз быстрее, чем \texttt{Java} и \texttt{C\#} справились с тестом в 4 раза меньшего размера).
+Это можно объяснить тем, что \texttt{Java} и \texttt{C\#} --- языки с виртуальной машиной. Интерпретация байткода для машин в исполняемый код занимает своё время.
+Этим же можно оправдать то, что оба языка показали себя примерно одинаково.
+
+Было замечено, что в случае использования неупорядоченных ассоциативных контейнеров (хэш-таблиц), --- \texttt{std::unordered\_map} и \texttt{Dictionary} в \texttt{STL C++} и \texttt{С\#} соответственно, ---  на небольших тестах \texttt{C\#} обогнал \texttt{C++} приблизительно в 2 раза. Что наводит на мысль, что майкрософтовская реализация хэш-таблиц в \texttt{MSVC} для \texttt{STL} несколько хуже их же реализации для \texttt{C\#}. 
